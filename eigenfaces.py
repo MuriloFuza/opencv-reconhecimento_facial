@@ -1,3 +1,4 @@
+from email.policy import strict
 import cv2
 
 detector_face = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
@@ -18,13 +19,15 @@ while(True):
     img_face = cv2.resize(img_gray[y:y + w, y:y + w], (width, height))
     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
     id, confidence = recognizer.predict(img_face)
+    nome = ''
     if id == 1:
-      nome = 'Ivo'
-    if id == 2:
       nome = 'Murilo'
-    else:
+    elif id == 2:
       nome = 'Thiago'
-    cv2.putText(img, nome, (x,y + (h + 30)), font, 3, (0,0,255))
+    else:
+      nome = 'Desconhecido'
+    cv2.putText(img, nome, (x,y + (h + 30)), font, 2, (0,0,255))
+    cv2.putText(img, str(confidence),(x,y + (h + 50)), font, 1, (0,0,255) )
   
   cv2.imshow("Face", img)
   cv2.waitKey(1)

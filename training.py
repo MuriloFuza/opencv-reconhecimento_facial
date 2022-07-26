@@ -2,9 +2,9 @@ import cv2
 import os
 import numpy as np
 
-eigenface = cv2.face.EigenFaceRecognizer_create()
+eigenface = cv2.face.EigenFaceRecognizer_create(threshold=2, num_components=50)
 fisherface = cv2.face.FisherFaceRecognizer_create()
-lbph = cv2.face.LBPHFaceRecognizer_create()
+lbph = cv2.face.LBPHFaceRecognizer_create(2, 2, 7, 7, 50)
 
 def getImageId():
   paths = [os.path.join('images', f) for f in os.listdir('images')]
