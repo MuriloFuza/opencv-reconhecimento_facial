@@ -2,9 +2,9 @@ import cv2
 import os
 import numpy as np
 
-eigenface = cv2.face.EigenFaceRecognizer_create(threshold=2, num_components=50)
-fisherface = cv2.face.FisherFaceRecognizer_create()
-lbph = cv2.face.LBPHFaceRecognizer_create(2, 2, 7, 7, 50)
+""" eigenface = cv2.face.EigenFaceRecognizer_create(threshold=2, num_components=50)
+fisherface = cv2.face.FisherFaceRecognizer_create() """
+lbph = cv2.face.LBPHFaceRecognizer_create(2, 20, 20, 20, 50)
 
 def getImageId():
   paths = [os.path.join('images', f) for f in os.listdir('images')]
@@ -24,12 +24,12 @@ ids, faces = getImageId()
 
 print("training...\n")
 
-eigenface.train(faces, ids)
+""" eigenface.train(faces, ids)
 eigenface.write('declarantEigen.yml')
 
 fisherface.train(faces, ids)
 fisherface.write('declarantFisher.yml')
-
+ """
 lbph.train(faces, ids)
 lbph.write('declarantLBPH.yml')
 

@@ -9,7 +9,7 @@ detectorFace = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 #reconhecedor = cv2.face.FisherFaceRecognizer_create()
 #reconhecedor.read("classificadorFisherYale.yml")
 reconhecedor = cv2.face.LBPHFaceRecognizer_create()
-reconhecedor.read("declarantLBPH.yml")
+reconhecedor.read("classificadorLBPHYale.yml")
 
 totalAcertos = 0
 percentualAcerto = 0.0
